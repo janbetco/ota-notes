@@ -1,0 +1,31 @@
+openapi: 3.0.0
+info:
+  title: Notes API
+  version: 0.0.1
+servers:
+  - url: /
+paths:
+  /notes:
+    get:
+      summary: Retrieve all notes
+      responses:
+        "200":
+          description: A list of notes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Note"
+components:
+  schemas:
+    Note:
+      type: object
+      required:
+        - title
+        - content
+      properties:
+        title:
+          type: string
+        content:
+          type: string
