@@ -3,7 +3,7 @@ A simple REST backend for note-taking
 
 ## Technologies used
 * Java 21
-* Spring 3
+* Spring Boot 3
 * Maven 3 (build wrapper included)
 
 ## Running the application
