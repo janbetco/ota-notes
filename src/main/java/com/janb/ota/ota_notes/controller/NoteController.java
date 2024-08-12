@@ -63,5 +63,4 @@ public class NoteController implements NotesApi {
     noteService.deleteNote(id);
     return ResponseEntity.noContent().build();
   }
-
 }

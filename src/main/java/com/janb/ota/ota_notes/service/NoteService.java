@@ -37,5 +37,4 @@ public class NoteService {
   public void deleteNote(UUID id) {
     noteDao.deleteById(id);
   }
-
 }

@@ -7,6 +7,9 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.stereotype.Repository;
 
+/**
+ * A simple in-memory data storage backed by {@link java.util.concurrent.ConcurrentHashMap}
+ */
 @Repository
 public class NoteDao implements GenericDao<Note, UUID> {
 
@@ -36,5 +39,9 @@ public class NoteDao implements GenericDao<Note, UUID> {
   @Override
   public void deleteById(UUID id) {
     storage.remove(id);
+  }
+
+  public void deleteAll() {
+    storage.clear();
   }
 }

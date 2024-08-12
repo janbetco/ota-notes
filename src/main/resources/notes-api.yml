@@ -21,11 +21,11 @@ paths:
       summary: Create a new note
       operationId: createNote
       requestBody:
+        required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/NoteRequest'
-        required: true
       responses:
         '201':
           description: Note created successfully
@@ -33,6 +33,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NoteResponse'
+        '400':
+          description: Failed to create note
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /notes/{id}:
     get:
       summary: Retrieve a specific note by ID
@@ -52,7 +58,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NoteResponse'
-        '400':
+        '404':
           description: Note not found
     put:
       summary: Update a specific note
@@ -123,5 +129,15 @@ components:
       properties:
         title:
           type: string
+          maxLength: 200
         content:
           type: string
+          minLength: 1
+          maxLength: 10000
+    Error:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
