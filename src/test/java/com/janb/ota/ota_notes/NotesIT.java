@@ -162,10 +162,6 @@ public class NotesIT {
   }
 
   private void addTestDataToDatastore() {
-    Note note = new Note();
-    note.setId(TEST_DATA_UUID);
-    note.setTitle("Existing Title");
-    note.setContent("Existing Content");
-    noteDao.save(note);
+    noteDao.save(new Note(TEST_DATA_UUID, "Existing Title", "Existing Content"));
   }
 }

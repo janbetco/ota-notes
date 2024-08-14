@@ -21,13 +21,11 @@ public class NoteService {
   }
 
   public Note createNote(Note note) {
-    note.setId(null);
-    return noteDao.save(note);
+    return noteDao.save(new Note(null, note.title(), note.content()));
   }
 
   public Note updateNote(UUID id, Note note) {
-    note.setId(id);
-    return noteDao.save(note);
+    return noteDao.save(new Note(id, note.title(), note.content()));
   }
 
   public Optional<Note> getNote(UUID id) {

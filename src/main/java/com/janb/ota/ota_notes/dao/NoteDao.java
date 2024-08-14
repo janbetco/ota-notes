@@ -28,11 +28,11 @@ public class NoteDao implements GenericDao<Note, UUID> {
 
   @Override
   public Note save(Note note) {
-    Optional<UUID> id = Optional.ofNullable(note.getId());
+    Optional<UUID> id = Optional.ofNullable(note.id());
     if (id.isEmpty()) {
-      note.setId(UUID.randomUUID());
+      note = new Note(UUID.randomUUID(), note.title(), note.content());
     }
-    storage.put(note.getId(), note);
+    storage.put(note.id(), note);
     return note;
   }
 
